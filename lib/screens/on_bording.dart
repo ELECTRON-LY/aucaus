@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../widgets/clickable_widgets/main_button.dart';
@@ -90,17 +89,17 @@ class _OnBordingState extends State<OnBording> {
               showNextButton: true,
               showSkipButton: true,
               skip: const Text('تخطي'),
-              done: const MainButton(
-                Text: 'متابعة',
+              done:  MainButton(
+                text: 'متابعة',
                 withBorder: false,
-                isLoading: false,
-                widthFromScreen: 0.2,
+                isloading: false,
+                widthFromScreen: 0.2, onPressed: (){},
               ),
-              next: const MainButton(
-                Text: 'التـالي',
+              next:  MainButton(
+                text: 'التـالي',
                 withBorder: false,
-                isLoading: false,
-                widthFromScreen: 0.33,
+                isloading: false,
+                widthFromScreen: 0.33, onPressed: (){},
               ),
               onDone: () {
                 setState(() {});

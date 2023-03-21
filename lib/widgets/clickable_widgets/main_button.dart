@@ -1,20 +1,19 @@
 import 'package:acacos/helpers/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class MainButton extends StatefulWidget {
   const MainButton(
       {super.key,
-      required this.Text,
+      required this.text,
       required this.withBorder,
       this.widthFromScreen = 0.9,
-      required this.isLoading});
-
-  final String Text;
+      this.isloading = false,
+      required this.onPressed});
+  final String text;
   final bool withBorder;
   final double widthFromScreen;
-  final bool isLoading;
+  final bool isloading;
+  final Function onPressed;
   @override
   State<MainButton> createState() => _MainButtonState();
 }
@@ -24,7 +23,9 @@ class _MainButtonState extends State<MainButton> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        widget.onPressed();
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -35,12 +36,14 @@ class _MainButtonState extends State<MainButton> {
               border: Border.all(color: mainColor, width: 2),
               borderRadius: BorderRadius.circular(10)),
           child: Center(
-            child: widget.isLoading
-                ? const CircularProgressIndicator()
+            child: widget.isloading
+                ? CircularProgressIndicator(
+                    color: widget.withBorder ? mainColor : Colors.white,
+                  )
                 : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.Text,
+                      widget.text,
                       style: TextStyle(
                           color: widget.withBorder ? mainColor : Colors.white),
                     ),
